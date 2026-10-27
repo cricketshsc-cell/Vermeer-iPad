@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<title>Can You Fool Vermeer?</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+	<main>
+
+        <!-- MUSEUM TITLE SCREEN -->
+<section id="startScreen">
+
+    <div class="intro-label">
+        AN INTERACTIVE EXHIBITION · 1937
+    </div>
+
+    <h1 class="intro-title">
+        THE ART OF<br>DECEPTION
+    </h1>
+
+    <p class="intro-subtitle">
+        The story of Han van Meegeren
+    </p>
+
+    <div class="intro-artwork">
+        <img src="emmaus.png" alt="The Supper at Emmaus">
+    </div>
+
+    <p class="intro-question">
+        In 1937, a painting fooled the world's leading art experts.
+        Could you do the same?
+    </p>
+
+    <button id="startGame">
+        START
+    </button>
+
+    <p class="intro-footer">
+        A SHORT INTERACTIVE MUSEUM EXPERIENCE
+    </p>
+
+</section>
+<!-- game introduction -->
+<!-- intro story -->
+<section id="gameIntro" class="game-screen" hidden>
+
+    <div class="stage-label">THE NETHERLANDS · 1937</div>
+
+    <h1>The Art of Deception</h1>
+
+    <div class="museum-card">
+
+        <h2>THE STORY OF HAN VAN MEEGEREN</h2>
+
+        <p>
+            Han van Meegeren was a Dutch painter who felt
+            that art experts never recognised his talent.
+        </p>
+
+        <p>
+            He wanted to prove them wrong, so he started
+            making fake paintings in the style of Johannes Vermeer.
+        </p>
+
+        <p>
+            By ageing canvases and experimenting with paint,
+            he managed to fool some of the greatest art experts
+            of his time.
+        </p>
+
+        <h2>NOW IT'S YOUR TURN</h2>
+
+        <p>
+            You're stepping into the forger's workshop.
+            Age your canvas, mix the right pigments,
+            and recreate a convincing painting.
+        </p>
+
+        <p>
+            Once you're finished, three judges will decide
+            whether your forgery is believable.
+        </p>
+
+        <p><strong>Can you fool the experts?</strong></p>
+
+    </div>
+
+    <button id="beginForgery" class="continue-button" type="button">
+        BEGIN YOUR FORGERY
+    </button>
+
+      
+</button>
+
+</section>
+
+<section id="prepareScreen" class="game-screen">
+    <div class="stage-label">STAGE I</div>
+
+    <h1>Prepare the Forgery</h1>
+
+    <p class="stage-description">
+        A convincing forgery needs to look centuries old.
+        Time the ageing process carefully.
+    </p>
+
+    <div class="museum-card">
+        <h2>AGE THE CANVAS</h2>
+
+        <p>
+            Stop the marker inside the target area.
+            The closer to the centre, the better your forgery.
+        </p>
+        
+<p class="ageing-instruction">
+    CANVAS AGEING
+</p>
+        <div class="timing-bar" id="timingBar">
+            <div class="target-zone"></div>
+            <div class="perfect-zone"></div>
+            <div class="timing-marker" id="timingMarker"></div>
+        </div>
+
+        <button id="stopTiming">STOP</button>
+
+        <div id="timingResult" class="timing-result"></div>
+    </div>
+
+    <button id="continueToPainting" class="continue-button hidden">
+        CONTINUE TO FORGERY
+    </button>
+</section>
+
+
+<!-- STAGE 2 - PREPARE THE PAINT -->
+<section id="paintScreen" class="game-screen" hidden>
+
+    <div class="stage-label">STAGE II</div>
+
+    <h1>Prepare the Paint</h1>
+
+    <p class="stage-description">
+        A convincing forgery requires more than talent.
+        Mix your pigments to create the perfect antique shade.
+    </p>
+
+    <div class="museum-card">
+        <h2>MIX THE PIGMENTS</h2>
+
+        <p>
+            Adjust the pigment mixture to match
+            the secret colour of the master forger.
+        </p>
+
+        <div class="pigment-comparison">
+    <div>
+        <div class="paint-preview" id="targetPaint"></div>
+        <p>MASTER'S PIGMENT</p>
+    </div>
+
+    <div>
+        <div class="paint-preview" id="paintPreview"></div>
+        <p>YOUR MIXTURE</p>
+    </div>
+</div>
+
+        <p class="ageing-instruction">
+            PIGMENT MIXING
+        </p>
+
+          <div class="pigment-controls">
+    <label for="redPigment">RED PIGMENT — WARMTH</label>
+    <input type="range" id="redPigment" min="0" max="255" value="80">
+
+    <label for="yellowPigment">YELLOW PIGMENT — GOLDEN TONE</label>
+    <input type="range" id="yellowPigment" min="0" max="255" value="165">
+
+    <label for="bluePigment">BLUE PIGMENT — COOLNESS</label>
+    <input type="range" id="bluePigment" min="0" max="255" value="90">
+</div>
+        
+
+        <button id="mixPaint" type="button">
+            FINISH MIXING
+        </button>
+
+        <div id="paintResult" class="timing-result"></div>
+    </div>
+
+    <button
+        id="continueToDrawing"
+        class="continue-button hidden"
+        type="button"
+    >
+        CONTINUE TO PAINTING
+    </button>
+
+</section>
+
+		<div class="game" id="drawingScreen" hidden>
+            <header class="drawing-heading">
+                <h1>Can You Fool Vermeer?</h1>
+                <p>Recreate the painting as accurately as possible.</p>
+            </header>
+
+			<div>
+				<h2>Reference</h2>
+
+				<div class="reference">
+					<img id="referenceImage" src="head-of-christ.png" alt="The Head of Christ, a forgery by Han van Meegeren">
+				</div>
+			</div>
+
+			<div>
+				<h2>Your Painting</h2>
+<p id="canvasCondition"></p>
+				<canvas id="canvas"></canvas>
+
+<div class="tools">
+
+    <label>
+        Colour
+        <input type="color" id="colorPicker" value="#222222">
+    </label>
+
+    <label>
+        Brush
+        <input type="range" id="brushSize" min="2" max="50" value="8">
+    </label>
+
+</div>
+<button id="charcoalTool" type="button">Charcoal</button>
+<button id="eraserTool" type="button">Eraser</button>
+<button id="undo" type="button">Undo</button>
+<button id="clear">Clear</button>
+<button id="submit">Submit Painting</button>
+
+			</div>
+
+		</div>
+
+
+<!-- COURTROOM SCENE -->
+<section id="courtroomScreen" class="courtroom-screen" hidden>
+
+    <p class="courtroom-eyebrow">THE FORGER'S TRIAL · 1945</p>
+    <h2>THE COURT IS NOW IN SESSION</h2>
+    <p class="courtroom-subtitle">
+        Three experts will decide the fate of your forgery.
+    </p>
+
+    <div class="courtroom-artwork">
+        <h3>THE EVIDENCE</h3>
+        <img id="courtroomPainting" alt="Your submitted forgery">
+    </div>
+
+    <div class="judge-bench">
+
+        <div class="judge">
+        
+            <h3>THE HISTORIAN</h3>
+            <div class="judge-plaque" id="judgeScore1">?</div>
+            <p id="judgeComment1">Awaiting verdict...</p>
+        </div>
+
+        <div class="judge">
+            <h3>THE ART CRITIC</h3>
+            <div class="judge-plaque" id="judgeScore2">?</div>
+            <p id="judgeComment2">Awaiting verdict...</p>
+        </div>
+
+        <div class="judge">
+            <h3>THE COLLECTOR</h3>
+            <div class="judge-plaque" id="judgeScore3">?</div>
+            <p id="judgeComment3">Awaiting verdict...</p>
+        </div>
+
+    </div>
+
+    <div id="courtroomVerdict" class="courtroom-verdict" hidden>
+        <h3>THE FINAL VERDICT</h3>
+        <p id="courtroomFinalScore"></p>
+        <p id="courtroomFinalMessage"></p>
+        <div id="verdictStamp" class="verdict-stamp"></div>
+        <button id="courtroomRestart">TRY AGAIN</button>
+    </div>
+
+</section>
+
+		<div id="result" class="hidden">
+
+			<h2>Your Vermeer Score</h2>
+
+			<div id="score">0%</div>
+
+			<p id="message"></p>
+
+		</div>
+
+	</main>
+
+	<script src="script.js"></script>
+
+<!-- PAGE RIP TRANSITION -->
+<div id="pageRip" class="page-rip-overlay" aria-hidden="true">
+    <div class="rip-half rip-top"></div>
+    <div class="rip-half rip-bottom"></div>
+</div>
+</body>
+</html>
+
+
