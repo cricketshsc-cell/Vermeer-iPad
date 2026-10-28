@@ -136,3 +136,61 @@ button:disabled { opacity: .55; }
   .judge h3 { font-size: 17px; }
   .judge p { font-size: 15px; }
 }
+
+/* iPad layout fixes */
+#continueToPainting, #continueToDrawing {
+  display: block;
+  width: fit-content;
+  margin: 22px auto 0;
+}
+#prepareScreen, #paintScreen { max-width: 1000px; margin: 0 auto; }
+#prepareScreen .museum-card, #paintScreen .museum-card { max-width: 820px; }
+#prepareScreen .timing-bar { width: min(100%, 700px); }
+#paintScreen .pigment-controls { max-width: 560px; }
+#paintScreen .paint-preview { width: 145px; height: 145px; }
+#drawingScreen { max-width: 1080px; column-gap: 26px; margin: 18px auto; }
+#drawingScreen .reference, #drawingScreen #canvas {
+  width: 100%; height: auto; aspect-ratio: 4 / 3;
+}
+#drawingScreen .reference { overflow: hidden; display: flex; justify-content: center; align-items: center; }
+#drawingScreen .reference img { height: 100%; width: 100%; object-fit: contain; }
+#drawingScreen #canvas { display: block; }
+#drawingScreen .tools { justify-content: center; padding-top: 15px; }
+#drawingScreen > div:last-child { text-align: center; }
+#drawingScreen > div:last-child h2 { text-align: left; }
+#canvasCondition { position: static; transform: none; text-align: left; margin: 0 0 6px; }
+.courtroom-artwork { max-width: 500px; }
+#courtroomPainting {
+  display: block;
+  width: 100%; height: auto; max-height: none;
+  aspect-ratio: 4 / 3; object-fit: contain;
+}
+@media (orientation: landscape) and (pointer: coarse) {
+  main { padding: 16px 28px 30px; }
+  .game-screen { min-height: 0; padding: 18px 10px 30px; }
+  .game-screen h1 { font-size: clamp(43px, 5vw, 64px); }
+  .stage-description { font-size: 23px; max-width: 760px; }
+  .museum-card { padding: 16px 22px; }
+  .museum-card h2 { font-size: 32px; }
+  .museum-card p { font-size: 21px; }
+  #prepareScreen .timing-bar { height: 88px; }
+  #paintScreen .pigment-controls label { font-size: 21px; }
+  #paintScreen .pigment-controls input { height: 35px; }
+  #continueToPainting, #continueToDrawing { margin: 22px auto 0; }
+  #drawingScreen { max-width: 1120px; gap: 12px 22px; }
+  #drawingScreen .reference, #drawingScreen #canvas {
+    height: auto; aspect-ratio: 4 / 3;
+  }
+  .drawing-heading h1 { font-size: 48px; }
+  .drawing-heading p { font-size: 22px; }
+  #drawingScreen h2 { font-size: 27px; }
+  #drawingScreen button { font-size: 21px; padding: 10px 17px; }
+  .courtroom-screen { max-width: 1120px; }
+  .courtroom-artwork { max-width: 500px; }
+  .judge h3 { font-size: 24px; }
+  .judge p { font-size: 20px; }
+}
+@media (max-width: 750px) and (orientation: portrait) {
+  #drawingScreen { grid-template-columns: 1fr; }
+  .drawing-heading { grid-column: 1; }
+}
