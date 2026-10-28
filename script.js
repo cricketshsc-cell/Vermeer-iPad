@@ -89,6 +89,7 @@ function getMousePosition(event) {
 }
 
 function startDrawing(event) {
+    event.preventDefault();
     undoHistory.push(ctx.getImageData(0, 0, canvas.width, canvas.height));
     drawing = true;
 
